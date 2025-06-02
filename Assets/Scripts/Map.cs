@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class MapMover
+public class Map
 {
     private int[,] _numbers;
     private readonly int[] _centerArea;
@@ -12,12 +12,12 @@ public class MapMover
 
     public event Action<int[]> AreaChanged;
 
-    public MapMover()
+    public Map()
     {
         _centerArea = new int[AreaSize * AreaSize];
     }
 
-    public MapMover(int[,] numbers)
+    public Map(int[,] numbers)
     {
         _centerArea = new int[AreaSize * AreaSize];
         SetNumbers(numbers);

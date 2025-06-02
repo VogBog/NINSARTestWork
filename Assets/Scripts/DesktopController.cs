@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class DesktopController : MonoBehaviour
 {
-    private MapMover _mapMover;
+    private Map _map;
     
-    public void Initialize(MapMover mapMover)
+    public void Initialize(Map map)
     {
-        _mapMover = mapMover;
+        _map = map;
     }
 
     private void Update()
@@ -25,7 +25,7 @@ public class DesktopController : MonoBehaviour
 
         if (x != 0 || y != 0)
         {
-            _mapMover.Move(new Vector2Int(x, y));
+            _map.Move(new Vector2Int(x, y));
         }
     }
 }

@@ -8,7 +8,7 @@ public class CubesPainter : MonoBehaviour
 
     private MeshRenderer[] _cubes;
 
-    public void Initialize(MapMover mapMover)
+    public void Initialize(Map map)
     {
         _cubes = new MeshRenderer[_cubesParent.childCount];
         for (int i = 0; i < _cubes.Length; i++)
@@ -21,7 +21,7 @@ public class CubesPainter : MonoBehaviour
             _cubes[i] = meshRenderer;
         }
 
-        mapMover.AreaChanged += ColorizeCubes;
+        map.AreaChanged += ColorizeCubes;
     }
 
     public void ColorizeCube(int cubeIndex, int colorIndex)
