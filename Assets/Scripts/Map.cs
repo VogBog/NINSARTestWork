@@ -6,7 +6,8 @@ public class Map
 {
     private int[,] _numbers;
     private readonly int[] _centerArea;
-    private Vector2Int _center;
+    
+    public Vector2Int Center { get; private set; }
 
     public const int AreaSize = 3;
 
@@ -26,7 +27,7 @@ public class Map
     public void SetNumbers(int[,] numbers)
     {
         _numbers = numbers;
-        _center = new(
+        Center = new(
             Random.Range(0, _numbers.GetLength(0)),
             Random.Range(0, _numbers.GetLength(1))
         );
@@ -37,8 +38,8 @@ public class Map
     {
         for (int i = 0; i < _centerArea.Length; i++)
         {
-            int x = (i % AreaSize) - 1 + _center.x;
-            int y = (i / AreaSize) - 1 + _center.y;
+            int x = (i % AreaSize) - 1 + Center.x;
+            int y = (i / AreaSize) - 1 + Center.y;
             
             x = x < 0 ? _numbers.GetLength(0) - 1 : x % _numbers.GetLength(0);
             y = y < 0 ? _numbers.GetLength(1) - 1 : y % _numbers.GetLength(1);
@@ -53,14 +54,14 @@ public class Map
     {
         direction.y *= -1;
         
-        var totalCenter = _center + direction;
+        var totalCenter = Center + direction;
         int length0 = _numbers.GetLength(0);
         int length1 = _numbers.GetLength(1);
 
         totalCenter.x = totalCenter.x < 0 ? length0 + totalCenter.x : totalCenter.x % length0;
         totalCenter.y = totalCenter.y < 0 ? length1 + totalCenter.y : totalCenter.y % length1;
         
-        _center = totalCenter;
+        Center = totalCenter;
         UpdateCenterArea();
     }
 }

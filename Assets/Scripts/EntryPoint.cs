@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EntryPoint : MonoBehaviour
 {
-    [SerializeField] private ReadFileView _readFileView;
+    [SerializeField] private UI _ui;
     
     private readonly Map _map = new();
     private readonly FileReader _fileReader = new();
@@ -20,6 +20,6 @@ public class EntryPoint : MonoBehaviour
             throw new NullReferenceException("Cannot find map input controller");
         mapController.Initialize(_map);
         
-        _readFileView.Initialize(_map, _fileReader);
+        _ui.Initialize(_map, _fileReader);
     }
 }
