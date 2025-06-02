@@ -54,11 +54,11 @@ public class FileReader
         
         int[,] data = new int[width, height];
 
-        for (int i = 0; i < lines.Length; i++)
+        for (int i = 0; i < height; i++)
         {
             if (lines[i].Length != width)
             {
-                throw new Exception("Array is not a matrix");
+                throw new Exception($"Array is not a matrix. Line {i} length {lines[i].Length} != {width}");
             }
             
             for (int j = 0; j < lines[i].Length; j++)
@@ -67,7 +67,7 @@ public class FileReader
                 {
                     throw new Exception($"Cannot parse the number {lines[i][j]} at indexes {i} {j}");
                 }
-                data[i, j] = number;
+                data[j, i] = number;
             }
         }
 
